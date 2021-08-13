@@ -87,6 +87,7 @@ class HuwaiiApp extends Application.AppBase {
 	}
 
 	function onSettingsChanged() { // triggered by settings change in GCM
+		System.println("onSettingsChanged");
 		if (HuwaiiApp has :checkPendingWebRequests) { // checkPendingWebRequests() can be excluded to save memory.
 			checkPendingWebRequests();
 		}

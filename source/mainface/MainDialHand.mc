@@ -125,7 +125,8 @@ class MainDialHand extends Ui.Drawable {
 		var number_formater = leading_zeros ? "%02d" : "%d";
 		
 		var digital_style = Application.getApp().getProperty("digital_style");
-		var alwayon_style = Application.getApp().getProperty("always_on_style");
+		//var alwayon_style = Application.getApp().getProperty("always_on_style");
+		var alwayon_style = 0; //added by baswi; in View always on never read (had spaces iso underscores in getProperty
 		if (digital_style == 0 || digital_style == 2) { // big or extra big
 			var bignumber = Application.getApp().getProperty("big_number_type") == 0 ? minute : hour;
 			var smallnumber = Application.getApp().getProperty("big_number_type") == 0 ? hour : minute;
