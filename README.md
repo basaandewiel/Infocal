@@ -24,7 +24,7 @@ Infocal is a digital and analogue watchface, carefully made with high quality re
 - Floor climbed
 - Barometer data
 - Countdown to event day
-- Weather condition
+- Weather condition (NB: put in your own openweathermap API key, see also below)
 
 Please configure your watch face via Garmin Connect Mobile or Garmin Express. Here is how to do it:
 
