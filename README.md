@@ -1,15 +1,6 @@
 # Infocal
 Infocal, a watchface for Garmin devices
 
-[Link to Garmin Connect IQ store](https://apps.garmin.com/en-US/apps/c97c4e34-55e4-4601-b5c2-45763bc481a2#0)
-
-# Contribution
-
-## Code contribution
-1. Fork the project
-2. Develop your feature
-3. Make a pull request to this project
-4. I will review the code and test it, and then I'll consider merging your code.
 
 # Description
 
@@ -97,7 +88,7 @@ Infocal uses OpenWeatherMap API free tier, which is only allowed for 60 API call
 
 It''s a key to allow you to get weather information from OpenWeatherMap, as describe in "Why weather does not update properly or showing the wrong number?".
 
-**Currently this watch face only support English (or Latin characters), more language support will come in the next release.**
+**Currently this watch face only support English (or Latin characters)**
 
 # Credits
 
