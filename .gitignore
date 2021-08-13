@@ -1,3 +1,5 @@
 bin/*
 *.DS_Store
+resources/settings/properties.xml.baswi
+
 
