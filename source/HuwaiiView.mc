@@ -102,7 +102,6 @@ class HuwaiiView extends WatchUi.WatchFace {
 
 	//baswi function added
 	function calculateBatteryInDays() {
-    	System.println("BEGIN -CalculateBatteryInDays");
     	if (last_battery_hour == null) {
     		last_battery_hour = time_now;
     		last_battery_percent = System.getSystemStats().battery;
@@ -141,8 +140,6 @@ class HuwaiiView extends WatchUi.WatchFace {
 
     // Update the view
     function onUpdate(dc) {    	
-		System.println("BEGIN - onUpdate");		
-
     	var clockTime = System.getClockTime();
     	var current_tick = System.getTimer();
     	
@@ -159,7 +156,7 @@ class HuwaiiView extends WatchUi.WatchFace {
     	  	force_render_component = true;
     	  
     	  	if (Application.getApp().getProperty("power_save_mode")) {
-    			System.println("Power save mode");
+    			System.println("Power save mode"); 
     			if (restore_from_resume) {
 					var current_mili = current_tick;
 					force_render_component = true;
@@ -198,7 +195,7 @@ class HuwaiiView extends WatchUi.WatchFace {
 				}
 			}
 			force_render_component = true;
-   			mainDrawComponents(dc);
+   			mainDrawComponents(dc); 
    			last_draw_minute = clockTime.min;
    			force_render_component = false;
 
