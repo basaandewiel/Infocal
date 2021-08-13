@@ -5,10 +5,6 @@ Infocal, a watchface for Garmin devices
 
 # Contribution
 
-My work will stay free, if you want to donate for my work, it will help me a lot:
-
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/pyryandam)
-
 ## Code contribution
 1. Fork the project
 2. Develop your feature
