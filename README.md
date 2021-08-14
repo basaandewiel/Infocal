@@ -90,6 +90,14 @@ It''s a key to allow you to get weather information from OpenWeatherMap, as desc
 
 **Currently this watch face only support English (or Latin characters)**
 
+# Building
+* setup Garmin SDK, including Eclipse
+* fill in your own Openweathermap key in file properties.xml
+
+## App settings
+* in Simulator 'reset all app data', to be sure that values from properties.xml are used
+* if transferring the .prg to watch via USB, also delete corresponding GARMIN/settings files, to be sure settings vrom properties.xml are used
+
 # Credits
 
 - Special thanks to **[warmsound](https://github.com/warmsound)** for awesome [Crystal Watchface](https://github.com/warmsound/crystal-face). Without Crystal, I'm not able to add some features (suntime, sensor history, weather...) to this watchface.
