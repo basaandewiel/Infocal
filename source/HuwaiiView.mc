@@ -17,7 +17,7 @@ var heart_x = 80;
 var second_font_height_half = 7;
 var second_background_color = 0x000000;
 var second_font_color = 0xFFFFFF;
-var second_clip_size = null;
+var second_clip_size = [20, 15];
 
 // theming
 var gbackground_color = 0x000000;
@@ -200,7 +200,6 @@ class HuwaiiView extends WatchUi.WatchFace {
 
    			second_digi_font = WatchUi.loadResource(Rez.Fonts.secodigi);
    			second_font_height_half = 7;
-   			second_clip_size = [20, 15];
 	    	
     		onPartialUpdate(dc);
     	} //End every second
@@ -213,7 +212,6 @@ class HuwaiiView extends WatchUi.WatchFace {
 		var analogDisplay = View.findDrawableById("analog"); 
 		var digitalDisplay = View.findDrawableById("digital");
 		
-		//%%%baswi only necc on settigns changed to check this
 		if (HuwaiiApp.settingsChanged) {
 			HuwaiiApp.settingsChanged = false; //means that changes are handled
 			if (current_is_analogue != Application.getApp().getProperty("use_analog")){
