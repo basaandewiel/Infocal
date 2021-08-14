@@ -209,13 +209,15 @@ class HuwaiiView extends WatchUi.WatchFace {
 
 	function mainDrawComponents(dc) {
 	
-		checkTheme();
+		checkTheme(); //baswi: if Iput this line in the if settingsChanged then
+		//crashes the watchface after several hours in file AnalogDial;drawHandAntiAlias;lin 191
+		//I don't know why, but tested it serveral times
 		
 		var analogDisplay = View.findDrawableById("analog"); 
 		var digitalDisplay = View.findDrawableById("digital");
 		
-		if (HuwaiiApp.settingsChanged) {
-			HuwaiiApp.settingsChanged = false; //means that changes are handled
+		if ($.settingsChanged) { //use bling symbol, for performance reasons
+			$.settingsChanged = false; //means that changes are handled
 			if (current_is_analogue != Application.getApp().getProperty("use_analog")){
 				// switch style
 				if (current_is_analogue) {
@@ -230,7 +232,7 @@ class HuwaiiView extends WatchUi.WatchFace {
 		
 		var backgroundView = View.findDrawableById("background");
 		var bar1 = View.findDrawableById("aBarDisplay");
-		var bar2 = View.findDrawableById("bBarDisplay");
+		var bar2 = View.findDrawableById("bBarDisplay"); 
 		var bar3 = View.findDrawableById("cBarDisplay");
 		var bar4 = View.findDrawableById("dBarDisplay");
 		var bar5 = View.findDrawableById("eBarDisplay");

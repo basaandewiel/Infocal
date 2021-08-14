@@ -18,7 +18,7 @@
     <property id="render_arc_line" type="boolean">true</property>
     
     <property id="comp12h" type="number">1</property>
-    <property id="comp2h" type="number">4</property>
+    <property id="comp2h" type="number">7</property>
     <property id="comp4h" type="number">5</property>
     <property id="comp6h" type="number">2</property>
     <property id="comp8h" type="number">23</property>

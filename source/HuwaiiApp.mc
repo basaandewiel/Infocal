@@ -18,6 +18,9 @@ var gLocationLng = null;
 var centerX;
 var centerY;
 
+var settingsChanged = false; //baswi: indicated whether settings where changed; in that case
+//extra checks can be neccessary
+
 
 hidden function degreesToRadians(degrees) {
 	return degrees * Math.PI / 180;
@@ -42,8 +45,6 @@ class HuwaiiApp extends Application.AppBase {
 	var days;
 	var months;
 	
-	var settingsChanged = false; //baswi: indicated whether settings where changed; in that case
-//extra checks can be neccessary
 	
     function initialize() {
         AppBase.initialize();
