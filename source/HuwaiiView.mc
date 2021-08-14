@@ -199,7 +199,6 @@ class HuwaiiView extends WatchUi.WatchFace {
    			force_render_component = false;
 
    			second_digi_font = WatchUi.loadResource(Rez.Fonts.secodigi);
-   			second_font_height_half = 7;
 	    	
     		onPartialUpdate(dc);
     	} //End every second
@@ -283,7 +282,6 @@ class HuwaiiView extends WatchUi.WatchFace {
 			}
 			
 			if (Application.getApp().getProperty("always_on_heart")) {
-				System.println("View: always on heart");
 				
 				var h = _retrieveHeartrate();
 				var heart_text = "--";
