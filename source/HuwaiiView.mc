@@ -213,14 +213,18 @@ class HuwaiiView extends WatchUi.WatchFace {
 		var analogDisplay = View.findDrawableById("analog"); 
 		var digitalDisplay = View.findDrawableById("digital");
 		
-		if (current_is_analogue != Application.getApp().getProperty("use_analog")){
-			// switch style
-			if (current_is_analogue) {
-				// turned to digital
-				analogDisplay.removeFont();
-			} else {
-				// turned to analogue
-				digitalDisplay.removeFont();
+		//%%%baswi only necc on settigns changed to check this
+		if (HuwaiiApp.settingsChanged) {
+			HuwaiiApp.settingsChanged = false; //means that changes are handled
+			if (current_is_analogue != Application.getApp().getProperty("use_analog")){
+				// switch style
+				if (current_is_analogue) {
+					// turned to digital
+					analogDisplay.removeFont();
+				} else {
+					// turned to analogue
+					digitalDisplay.removeFont();
+				}
 			}
 		}
 		

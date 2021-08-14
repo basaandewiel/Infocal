@@ -18,6 +18,7 @@ var gLocationLng = null;
 var centerX;
 var centerY;
 
+
 hidden function degreesToRadians(degrees) {
 	return degrees * Math.PI / 180;
 }  
@@ -40,6 +41,9 @@ class HuwaiiApp extends Application.AppBase {
 	var mView;
 	var days;
 	var months;
+	
+	var settingsChanged = false; //baswi: indicated whether settings where changed; in that case
+//extra checks can be neccessary
 	
     function initialize() {
         AppBase.initialize();
@@ -88,6 +92,7 @@ class HuwaiiApp extends Application.AppBase {
 
 	function onSettingsChanged() { // triggered by settings change in GCM
 		System.println("onSettingsChanged");
+		settingsChanged = true;
 		if (HuwaiiApp has :checkPendingWebRequests) { // checkPendingWebRequests() can be excluded to save memory.
 			checkPendingWebRequests();
 		}
