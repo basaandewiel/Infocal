@@ -133,7 +133,7 @@ class HuwaiiApp extends Application.AppBase {
 			}
 		}
 		
-		Sys.println("Check check: " + gLocationLat + ", " + gLocationLng);
+		//Sys.println("Check check: " + gLocationLat + ", " + gLocationLng);
 
 		if (!(Sys has :ServiceDelegate)) {
 			return;

@@ -29,6 +29,7 @@ var gbar_color_back = 0x550000;
 var gbar_color_0 = 0xFFFF00;
 var gbar_color_1 = 0x0000FF;
 
+var low_power_mode = false; //baswi inserted; NOT YET USED
 var force_render_component = false;
 
 var last_battery_percent = -1;
@@ -97,7 +98,8 @@ class HuwaiiView extends WatchUi.WatchFace {
     	 var clockTime = System.getClockTime(); 
 
     	last_draw_minute = -1;
-    	restore_from_resume ; //baswi, should be set to true?
+//    	restore_from_resume ; //baswi, should be set to true?
+    	restore_from_resume = true ;
     	last_resume_mili = System.getTimer();
     	
 		checkBackgroundRequest();
@@ -141,7 +143,7 @@ class HuwaiiView extends WatchUi.WatchFace {
     	}
 	}
 
-    // Update the view
+    // Update the view; in low power mode, called ONCE PER MINUTE!!
     function onUpdate(dc) {    	
     	var clockTime = System.getClockTime();
     	var current_tick = System.getTimer();
@@ -150,15 +152,17 @@ class HuwaiiView extends WatchUi.WatchFace {
     	var current_minute = clockTime.min;
 
         //do EVERY MINUTE; check whether minute has changed
+        //TODO: this loop should be optimized; most time watchface is in low power mode
         if (current_minute!=last_draw_minute) {
-        	last_draw_minute = current_minute;
+        	//System.println("EVERY minute");
+        	//%%%last_draw_minute = current_minute;
     	  	calculateBatteryInDays();
         	// Only check background web request every 1 minute
 		  	checkBackgroundRequest();
-
     	  	force_render_component = true;
+    	  	
     	  	if (Application.getApp().getProperty("power_save_mode")) {
-    			System.println("Power save mode"); 
+    			System.println("**** Power save mode turned ON in settings - unknown behavior"); 
     			if (restore_from_resume) {
 					var current_mili = current_tick;
 					force_render_component = true;
@@ -170,9 +174,9 @@ class HuwaiiView extends WatchUi.WatchFace {
 					checkBackgroundRequest();
 					mainDrawComponents(dc);
 					force_render_component = false;
-    				} else { 
-	    				var current_minute = clockTime.min;
-	    				if (current_minute!=last_draw_minute) {
+    			} else { 
+	    			var current_minute = clockTime.min;
+	    			if (current_minute!=last_draw_minute) {
 	    				// continue
 	    				last_draw_minute = current_minute;
 	    				// minute turn
@@ -183,10 +187,19 @@ class HuwaiiView extends WatchUi.WatchFace {
 //	    				return;
 	    			}
     			}
-    	  	} //power save mode
+    	  	} else {
+    	  		//NO power save mode baswi created branch
+    	  		//System.println("NO Power save mode; ONLY MODE I USE -settings");
+    	  		//NB: Power save mode, is appl. setting; low power mode is watch mode (10 sec after gesture)
+    	  		checkBackgroundRequest();
+	    		mainDrawComponents(dc);
+   				force_render_component = false;
+    	  	}//power save mode
+    	  	last_draw_minute = current_minute; //update last draw time
 		} else {
 			//do EVERY SECOND
         	// normal power mode
+        	//System.println("EVERY second");
      		if (restore_from_resume) {
     			var current_mili = current_tick;
     		
@@ -198,7 +211,7 @@ class HuwaiiView extends WatchUi.WatchFace {
 			}
 			force_render_component = true;
    			mainDrawComponents(dc); 
-   			last_draw_minute = clockTime.min;
+   			//%%%last_draw_minute = clockTime.min; //baswi: commented, because this is done in per minute branch
    			force_render_component = false;
 
 //%%%   			second_digi_font = WatchUi.loadResource(Rez.Fonts.secodigi);
@@ -322,6 +335,7 @@ class HuwaiiView extends WatchUi.WatchFace {
     
     // The user has just looked at their watch. Timers and animations may be started here.
     function onExitSleep() {
+    	low_power_mode = false;
 		var dialDisplay = View.findDrawableById("analog");
 		if (dialDisplay != null) {
 			dialDisplay.enableSecondHand();
@@ -331,6 +345,7 @@ class HuwaiiView extends WatchUi.WatchFace {
 
     // Terminate any active timers and prepare for slow updates.
     function onEnterSleep() {
+    	low_power_mode = true;
    		var dialDisplay = View.findDrawableById("analog");
    		if (dialDisplay != null) {
 			dialDisplay.disableSecondHand();
