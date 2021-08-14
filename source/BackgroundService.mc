@@ -101,6 +101,8 @@ class BackgroundService extends Sys.ServiceDelegate {
 		// Useful data only available if result was successful.
 		// Filter and flatten data response for data that we actually need.
 		// Reduces runtime memory spike in main app.
+		System.print("openweathermap result code:");
+		System.println(responseCode);
 		if (responseCode == 200) {
 			result = {
 				"cod" => data["cod"],

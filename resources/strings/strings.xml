@@ -17,8 +17,6 @@
     
     <string id="always_on_second">Always-on second (for digital)</string>
     <string id="always_on_heart">Always-on heart rate (for digital)</string>
-    
-    <string id="sleep_time_behaviour">Sleep time behaviour (Currently disabled)</string>
     <string id="default_render">Default (still render screen)</string>
     <string id="no_render">Off screen to save power</string>
     

@@ -94,7 +94,7 @@ class HuwaiiView extends WatchUi.WatchFace {
     	 var clockTime = System.getClockTime(); 
 
     	last_draw_minute = -1;
-    	restore_from_resume ;
+    	restore_from_resume ; //baswi, should be set to true?
     	last_resume_mili = System.getTimer();
     	
 		checkBackgroundRequest();
@@ -154,7 +154,6 @@ class HuwaiiView extends WatchUi.WatchFace {
 		  	checkBackgroundRequest();
 
     	  	force_render_component = true;
-    	  
     	  	if (Application.getApp().getProperty("power_save_mode")) {
     			System.println("Power save mode"); 
     			if (restore_from_resume) {
@@ -211,7 +210,7 @@ class HuwaiiView extends WatchUi.WatchFace {
 	
 		checkTheme();
 		
-		var analogDisplay = View.findDrawableById("analog");
+		var analogDisplay = View.findDrawableById("analog"); 
 		var digitalDisplay = View.findDrawableById("digital");
 		
 		if (current_is_analogue != Application.getApp().getProperty("use_analog")){
@@ -260,7 +259,6 @@ class HuwaiiView extends WatchUi.WatchFace {
         } else {
         	digitalDisplay.draw(dc);
         }
-        
 	}
 
 	function onPartialUpdate(dc) {
@@ -283,6 +281,7 @@ class HuwaiiView extends WatchUi.WatchFace {
 			}
 			
 			if (Application.getApp().getProperty("always_on_heart")) {
+				System.println("View: always on heart");
 				
 				var h = _retrieveHeartrate();
 				var heart_text = "--";

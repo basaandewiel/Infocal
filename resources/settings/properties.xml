@@ -1,12 +1,11 @@
 <properties>
     <property id="theme_code" type="number">0</property>
-	<property id="power_save_mode" type="boolean">true</property>
-    <property id="sleep_time_behaviour" type="number">0</property>
+	<property id="power_save_mode" type="boolean">false</property>
 	
     <property id="white_background" type="boolean">false</property>
     <property id="always_on_second" type="boolean">false</property>
-    <property id="always_on_heart" type="boolean">false</property>
-    <property id="use_analog" type="boolean">false</property>
+    <property id="always_on_heart" type="boolean">true</property>
+    <property id="use_analog" type="boolean">true</property>
     <property id="digital_style" type="number">0</property>
     <property id="zero_leading_digital" type="boolean">true</property>
     <property id="minimal_data" type="boolean">false</property>
@@ -20,16 +19,15 @@
     
     <property id="comp12h" type="number">1</property>
     <property id="comp2h" type="number">4</property>
-    <property id="comp4h" type="number">3</property>
+    <property id="comp4h" type="number">5</property>
     <property id="comp6h" type="number">2</property>
-    <property id="comp8h" type="number">5</property>
-    <!-- <property id="comp10h" type="number">6</property> -->
+    <property id="comp8h" type="number">23</property>
     <property id="comp10h" type="number">28</property>
     <property id="compbart" type="number">9</property>
     <property id="compbarb" type="number">9</property>
     
-    <property id="compgrapht" type="number">0</property>
-    <property id="compgraphb" type="number">0</property>
+    <property id="compgrapht" type="number">1</property>
+    <property id="compgraphb" type="number">2</property>
     
     <property id="baro_period" type="number">3</property>
     
@@ -45,7 +43,7 @@
     
     <property id="barometer_unit" type="number">0</property>
     
-    <property id="openweathermap_api" type="string">putinyourownkey</property>
+    <property id="openweathermap_api" type="string">0dfd5329cfac203eb9ca2289a06b5135</property>
     
     <property id="ctext_input" type="string"></property>
 
