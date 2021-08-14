@@ -62,6 +62,9 @@ class HuwaiiView extends WatchUi.WatchFace {
 
     // Load your resources here
     function onLayout(dc) {
+		//baswi next line was executed eacht second; removed there and inserted here%%%
+	    second_digi_font = WatchUi.loadResource(Rez.Fonts.secodigi);
+    
     	smallDigitalFont = WatchUi.loadResource(Rez.Fonts.smadigi);
     	centerX = dc.getWidth()/2;
     	centerY = dc.getHeight()/2;
@@ -198,7 +201,7 @@ class HuwaiiView extends WatchUi.WatchFace {
    			last_draw_minute = clockTime.min;
    			force_render_component = false;
 
-   			second_digi_font = WatchUi.loadResource(Rez.Fonts.secodigi);
+//%%%   			second_digi_font = WatchUi.loadResource(Rez.Fonts.secodigi);
 	    	
     		onPartialUpdate(dc);
     	} //End every second
