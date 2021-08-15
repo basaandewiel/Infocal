@@ -151,9 +151,9 @@ class AnalogDial extends Ui.Drawable {
     	}
     	
     	// no second hand in power save mode
-    	if (Application.getApp().getProperty("power_save_mode")) {
+/*    	if (Application.getApp().getProperty("power_save_mode")) {
     		return;
-    	}
+    	}*/ //baswi:@@@removed power_save_mode
     	
         dc.setColor(gsecondary_color, Graphics.COLOR_TRANSPARENT);
         drawSecondHand(dc);

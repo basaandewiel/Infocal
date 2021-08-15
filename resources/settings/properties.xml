@@ -1,6 +1,5 @@
 <properties>
     <property id="theme_code" type="number">0</property>
-	<property id="power_save_mode" type="boolean">false</property>
 	
     <property id="white_background" type="boolean">false</property>
     <property id="always_on_second" type="boolean">false</property>
@@ -43,7 +42,7 @@
     
     <property id="barometer_unit" type="number">0</property>
     
-    <property id="openweathermap_api" type="string">putinyourownkey</property>
+    <property id="openweathermap_api" type="string">0dfd5329cfac203eb9ca2289a06b5135</property>
     
     <property id="ctext_input" type="string"></property>
 

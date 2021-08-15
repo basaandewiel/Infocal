@@ -1,3 +1,7 @@
+//TODO baswi
+// background pocesses; check how often weather data is gathered
+// how often is sun set/rise calculated?
+
 using Toybox.WatchUi;
 using Toybox.Graphics;
 using Toybox.System;
@@ -151,50 +155,18 @@ class HuwaiiView extends WatchUi.WatchFace {
     	time_now = Time.now();
     	var current_minute = clockTime.min;
 
-        //do EVERY MINUTE; check whether minute has changed
-        //TODO: this loop should be optimized; most time watchface is in low power mode
         if (current_minute!=last_draw_minute) {
+        	//executed EVERY MINUTE (also in low power mode)
         	//System.println("EVERY minute");
-        	//%%%last_draw_minute = current_minute;
-    	  	calculateBatteryInDays();
-        	// Only check background web request every 1 minute
-		  	checkBackgroundRequest();
+        	if ((current_minute % 15) == 0) {
+        		//do every 15 minutes
+	    	  	calculateBatteryInDays();
+	    	}        	
+   	  		checkBackgroundRequest();
+   	  		
     	  	force_render_component = true;
-    	  	
-    	  	if (Application.getApp().getProperty("power_save_mode")) {
-    			System.println("**** Power save mode turned ON in settings - unknown behavior"); 
-    			if (restore_from_resume) {
-					var current_mili = current_tick;
-					force_render_component = true;
-					// will allow watch face to refresh in 5s when resumed (`onShow()` called)
-					if ((current_mili-last_resume_mili) > 5000) {
-						restore_from_resume = false;
-					}
-					// in resume time
-					checkBackgroundRequest();
-					mainDrawComponents(dc);
-					force_render_component = false;
-    			} else { 
-	    			var current_minute = clockTime.min;
-	    			if (current_minute!=last_draw_minute) {
-	    				// continue
-	    				last_draw_minute = current_minute;
-	    				// minute turn
-	    				checkBackgroundRequest();
-	    				mainDrawComponents(dc);
-	    			} else {
-	    				// only draw spatial
-//	    				return;
-	    			}
-    			}
-    	  	} else {
-    	  		//NO power save mode baswi created branch
-    	  		//System.println("NO Power save mode; ONLY MODE I USE -settings");
-    	  		//NB: Power save mode, is appl. setting; low power mode is watch mode (10 sec after gesture)
-    	  		checkBackgroundRequest();
-	    		mainDrawComponents(dc);
-   				force_render_component = false;
-    	  	}//power save mode
+    		mainDrawComponents(dc);
+			force_render_component = false;			
     	  	last_draw_minute = current_minute; //update last draw time
 		} else {
 			//do EVERY SECOND
@@ -211,11 +183,7 @@ class HuwaiiView extends WatchUi.WatchFace {
 			}
 			force_render_component = true;
    			mainDrawComponents(dc); 
-   			//%%%last_draw_minute = clockTime.min; //baswi: commented, because this is done in per minute branch
-   			force_render_component = false;
-
-//%%%   			second_digi_font = WatchUi.loadResource(Rez.Fonts.secodigi);
-	    	
+   			force_render_component = false;	    	
     		onPartialUpdate(dc);
     	} //End every second
     }

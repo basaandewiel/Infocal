@@ -20,10 +20,6 @@
         	<listEntry value="17">@Strings.theme_lime</listEntry>
         </settingConfig></setting>
     
-	<setting propertyKey="@Properties.power_save_mode" title="@Strings.power_save_mode">
-        <settingConfig type="boolean" />
-    </setting>
-    
     
     <setting propertyKey="@Properties.always_on_second" title="@Strings.always_on_second">
         <settingConfig type="boolean" />
